@@ -1,0 +1,81 @@
+@html.extend('layout', function(model) {
+  @html.block('content', function(model) {
+	<!-- Dashboard Headline -->
+	<div class="dashboard-headline">
+		<h3>Liste des ADS</h3>
+
+	</div>
+	<!-- Row -->
+	<!-- Row -->
+	<div class="row">
+
+		<!-- Dashboard Box -->
+		<div class="col-xl-12">
+			<table class="table table-bordered col-xl-12">
+				<thead>
+				    <tr>
+				      <th>Photo</th>
+				      <th>Nom complet</th>
+				      <th>Date debut</th>
+				      <th>Date d'expiration</th>
+				      <th>Status</th>
+				      <th>Action</th>
+				    </tr>
+				</thead>
+				<tbody>
+					<tr class="ads">
+				      <th scope="row">
+				      	<a href="#"><img height="50" src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
+				      </th>
+				      <td>Jacob LIMBI</td>
+				      <td>15 Juin 2020</td>
+				      <td>15 Novembre 2020</td>
+				      <td class="">
+				      		<div class="verified-badge-with-title">Certifié</div>
+				      </td>
+				      <td>
+				      		<center>
+				      			<a href="#" class="button ripple-effect"><i class="icon-line-awesome-power-off"></i> Arrêter</a>
+				      		</center>
+				      </td>
+				    </tr>
+				    <tr class="ads">
+				      <th scope="row">
+				      	<a href="#"><img height="50" src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
+				      </th>
+				      <td>Jacob LIMBI</td>
+				      <td>15 Juin 2020</td>
+				      <td>15 Novembre 2020</td>
+				      <td class="">
+				      		<div class="verified-badge-with-title">Certifié</div>
+				      </td>
+				      <td>
+				      		<center>
+				      			<a href="#" class="button ripple-effect"><i class="icon-line-awesome-power-off"></i> Arrêter</a>
+				      		</center>
+				      </td>
+				    </tr>
+				    <tr class="ads">
+				      <th scope="row">
+				      	<a href="#"><img height="50" src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
+				      </th>
+				      <td>Jacob LIMBI</td>
+				      <td>15 Juin 2020</td>
+				      <td>15 Novembre 2020</td>
+				      <td class="">
+				      		<div class="stop-badge-with-title">Arrêté</div>
+				      </td>
+				      <td>
+				      		<center>
+				      			<a href="#" class="button ripple-effect gray"><i class="icon-line-awesome-refresh"></i> Renouveler</a>
+				      		</center>
+				      </td>
+				    </tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>
+	<!-- Row / End -->
+  })
+})
