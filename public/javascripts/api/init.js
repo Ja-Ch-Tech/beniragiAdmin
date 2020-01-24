@@ -1,7 +1,42 @@
+//Permet de recuperer la session de l'utilisateur
+const getSessionUser = (callback) => {
+    $.ajax({
+        type: 'GET',
+        url: "/api/getSessionUser",
+        dataType: "json",
+        success: function(data) {
+            if (data.user_id) {
+                callback(true, data);
+            } else {
+                callback(false, null);
+            }
+        },
+        error: function(err) {
+            callback(err);
+        }
+    });
+}
+
+//Verifie si les champs sont vides
+const NoEmpty = object => {
+    let flag = false;
+
+    for (const value in object) {
+        if (object[value] != "" && object.hasOwnProperty(value)) {
+            flag = true;
+        } else {
+            flag = false;
+            break;
+        }
+    }
+
+    return flag;
+}
+
 //Start evaluation
 const starRating = (ratingElem) => {
 
-    $(ratingElem).each(function () {
+    $(ratingElem).each(function() {
 
         var dataRating = $(this).attr('data-rating');
 
@@ -80,4 +115,15 @@ function getMonth(month) {
     return monthLetters[parseInt(month)];
 }
 
-export { starRating, customDate }
+/**
+ * Permet la rcherche d'un élément dans un tableau à une propriété spécifié
+ * @param {Array} tableau Le tableau dont on cherche un élément
+ * @param {Number} id L'id en question
+ */
+function getItem(tableau,value) {
+    const itemOut = tableau.find(item => item.type == value);
+
+    return itemOut;
+}
+
+export { getSessionUser, NoEmpty, starRating, getItem, customDate }
