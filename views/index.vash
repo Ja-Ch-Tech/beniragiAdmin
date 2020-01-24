@@ -11,10 +11,10 @@
 					</div>
 
 					<!-- Form -->
-					<form method="post" id="login-form" action="/dashboard">
+					<form method="post" id="login-form">
 						<div class="input-with-icon-left">
 							<i class="icon-material-baseline-mail-outline"></i>
-							<input type="text" class="input-text with-border" name="loginAdmin" id="loginAdmin" placeholder="Login" required/>
+							<input type="text" class="input-text with-border" name="username" id="loginAdmin" placeholder="Login" required/>
 						</div>
 
 						<div class="input-with-icon-left">
@@ -24,7 +24,7 @@
 					</form>
 
 					<!-- Button -->
-					<button class="button full-width button-sliding-icon ripple-effect margin-top-10" type="submit" form="login-form">Se connecter<i class="icon-material-outline-arrow-right-alt"></i></button>
+					<button class="button full-width button-sliding-icon ripple-effect margin-top-10" type="submit" form="login-form" id="login-button">Se connecter<i class="icon-material-outline-arrow-right-alt"></i></button>
     			</div>
     		</div>		
     	</div>

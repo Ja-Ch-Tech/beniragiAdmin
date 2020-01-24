@@ -289,6 +289,7 @@
 <script src="/javascripts/slick.min.js"></script>
 <script src="/javascripts/custom.js"></script>
 
+<script src="/javascripts/api/router.js" type="module"></script>
 
 <!-- Chart.js // documentation: http://www.chartjs.org/docs/latest/ -->
 <script src="/javascripts/chart.min.js"></script>

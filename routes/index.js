@@ -3,7 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Connexion' });
+  if (req.session.id_admin) {
+    res.redirect(301, '/dashboard');
+  } else {
+    res.render('index', { title: 'Connexion' });
+  }
 });
 
 module.exports = router;
