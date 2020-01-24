@@ -18,7 +18,7 @@ router.post('/admin/login', (req, res) => {
     }
 
     axios.post(`${API}/admin/login`, data)
-         .then(response => {
+        .then(response => {
             if (response.data.getEtat) {
                 //Mise en session
                 req.session.id_admin = response.data.getObjet.id_admin;
@@ -28,10 +28,34 @@ router.post('/admin/login', (req, res) => {
             } else {
                 res.status(200).send(response.data)
             }
-         })
-         .catch(err => {
-             res.status(500).send(err)
-         })
+        })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+})
+
+//Recupere la session de l'utilisateur
+router.get('/getSessionUser', (req, res) => {
+    let id = req.session.id_admin ? req.session.id_admin : null,
+        username = req.session.username ? req.session.username : null;
+    obj = {
+        "user_id": id,
+        "username": username
+    };
+
+    res.status(200);
+    res.send(obj)
+});
+
+//Recupere tous les utilisateurs
+router.get('/admin/getUsers/:id_admin', (req, res) => {
+    axios.get(`${API}/admin/users/listUsers/${req.params.id_admin}`)
+        .then(response => {
+            res.status(200).send(response.data)
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        })
 })
 
 module.exports = router;
