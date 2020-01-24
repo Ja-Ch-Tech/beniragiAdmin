@@ -98,9 +98,7 @@ const starRating = (ratingElem) => {
 }
 
 //Customisation de la date
-const customDate = (date) => {
-    console.log(date);
-    
+const customDate = (date) => {    
     var formatDate = new Date(date);
     return formatDate.getDate() + " " + getMonth(formatDate.getMonth()) + " " + formatDate.getFullYear();
 }

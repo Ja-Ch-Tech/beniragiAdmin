@@ -1,5 +1,5 @@
 import { login } from './admin.js';
-import { newVIP } from './vip.js'
+import { newVIP, all } from './vip.js'
 import { getUsers } from './client_api.js';
 
 (() => {
@@ -24,6 +24,10 @@ import { getUsers } from './client_api.js';
         if (pathName.split("/")[1] == "vip") {
             if (/demandes/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
                 newVIP()
+            }
+
+            if (/liste/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
+                all()
             }
         }
     //#endregion

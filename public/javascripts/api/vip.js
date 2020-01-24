@@ -82,4 +82,67 @@ const list = () => {
     })
 }
 
-export { list as newVIP }
+const listAll = () => {
+    $.ajax({
+        type: 'GET',
+        url: "/api/admin/vip/getall",
+        dataType: "json",
+        success: function (data) {
+            if (data.getEtat) {
+                data.getObjet.map((value, index, tab) => {
+                    var freelancer = value.infosUser;
+                    var name = () => {
+                        if (freelancer.identity) {
+                            return `${freelancer.identity.lastName} ${freelancer.identity.name.toUpperCase()}`
+                        } else {
+                            return freelancer.email;
+                        }
+                    },
+                    certificate = () => {
+                        if (/Certifié|Certificate/i.test(value.infosVIP.status)) {
+                            return `<div class="verified-badge-with-title">Certifié</div>`;
+                        } else if (/Arrêter|Stop/i.test(value.infosVIP.status)) {
+                            return `<div class="stop-badge-with-title">Arrêté</div>`
+                        }else {
+                            return ""
+                        }
+                    },
+                    action = () => {
+                        if (/stop/i.test(value.infosVIP.action)) {
+                            return '<a href="#" class="button ripple-effect"><i class="icon-line-awesome-power-off"></i> Arrêter</a>'
+                        } else if (/Renouveler/i.test(value.infosVIP.action)) {
+                            return '<a href="#" class="button ripple-effect gray"><i class="icon-line-awesome-refresh"></i> Renouveler</a>'
+                        } else if (/accord/i.test(value.infosVIP.action)) {
+                            return `<a href="#" class="button ripple-effect gray" onclick="responseRequest('${value.infosVIP.id_vip}', 'true')"><i class="icon-exclamation"></i> Accord</a>`
+                        }else {
+                            return "";
+                        }
+                    },
+                    content = `<tr class="ads">
+                                <th scope="row">
+                                    <a href="#"><img height="50" src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
+                                </th>
+                                <td>${name()}</td>
+                                <td>${value.infosVIP.dates.begin ? customDate(value.infosVIP.dates.begin) : ""}</td>
+                                <td>${value.infosVIP.dates.end ? customDate(value.infosVIP.dates.end) : ""}</td>
+                                <td class="">
+                                    ${certificate()}
+                                </td>
+                                <td>
+                                        <center>
+                                            ${action()}             
+                                        </center>
+                                </td>
+                                </tr>`;
+                    $("#itemVIP").append(content)
+                })
+            } else {
+                
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    });
+}
+export { list as newVIP, listAll as all }

@@ -84,4 +84,16 @@ router.post('/admin/vip/responseRequest', (req, res) => {
              res.status(500).send(err)
          })
 })
+
+//Route permettant de récupérer tous les demandes vip
+router.get('/admin/vip/getall', (req, res) => {
+    axios.get(`${API}/admin/vip/getall/${req.session.id_admin}`)
+         .then(response => {
+            res.status(200).send(response.data)
+         })
+         .catch(err => {
+             res.status(200).send(err)
+         })
+})
+
 module.exports = router;
