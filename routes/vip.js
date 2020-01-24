@@ -8,7 +8,7 @@ router.get('/demandes', function(req, res, next) {
 
 /* Liste ADS. */
 router.get('/liste', function(req, res, next) {
-  res.render('listeAds', { title: 'Liste des ADS' });
+  res.render('listeAds', { title: 'Liste des demandes VIP' });
 });
 
 module.exports = router;

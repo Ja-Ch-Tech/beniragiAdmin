@@ -1,4 +1,5 @@
 import { login } from './admin.js';
+import { newVIP } from './vip.js'
 
 (() => {
 
@@ -7,6 +8,14 @@ import { login } from './admin.js';
     //#region /
         if (pathName == "/") {
             login()
+        }
+    //#endregion
+
+    //#region VIP
+        if (pathName.split("/")[1] == "vip") {
+            if (/demandes/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
+                newVIP()
+            }
         }
     //#endregion
 })();

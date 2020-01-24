@@ -3,7 +3,7 @@
 	<!-- Dashboard Headline -->
 	<div class="dashboard-headline">
 		<h3>Demandes</h3>
-		<span class="margin-top-7">demande pour compte VIP</span>
+		<span class="margin-top-7">Demande pour compte VIP</span>
 
 	</div>
 	<!-- Row -->
@@ -12,119 +12,8 @@
 
 		<!-- Dashboard Box -->
 		<div class="col-xl-12">
-			<div class="dashboard-box margin-top-0">
-
-				<!-- Headline -->
-				<div class="headline">
-					<h3><i class="icon-material-outline-supervisor-account"></i> 3 demandes</h3>
-				</div>
-
-				<div class="content">
-					<ul class="dashboard-box-list">
-						<li>
-							<!-- Overview -->
-							<div class="freelancer-overview manage-candidates">
-								<div class="freelancer-overview-inner">
-
-									<!-- Avatar -->
-									<div class="freelancer-avatar">
-										<div class="verified-badge"></div>
-										<a href="#"><img src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
-									</div>
-
-									<!-- Name -->
-									<div class="freelancer-name">
-										<h4><a href="#">Jacob LIMBI <img class="flag" src="/images/flags/cd.svg" alt="" title="Congo-Kinshasa" data-tippy-placement="top"></a></h4>
-										<!-- Details -->
-										<span class="freelancer-detail-item"><a href="#"><i class="icon-feather-mail"></i> josue@example.com</a></span>
-										<span class="freelancer-detail-item"><i class="icon-feather-phone"></i> +243899641137</span>
-										<span class="freelancer-detail-item"><i class="icon-line-awesome-clock-o"></i> 19 decembre 2020</span>
-
-										<!-- Rating -->
-										<div class="freelancer-rating">
-											<div class="star-rating" data-rating="5.0"></div>
-										</div>
-
-										<!-- Buttons -->
-										<div class="buttons-to-right always-visible margin-top-25 margin-bottom-5">
-											<a href="#" class="button ripple-effect"><i class="icon-feather-check"></i> Accepter la demande</a>
-											<a href="#small-dialog" class="popup-with-zoom-anim button dark ripple-effect"><i class="icon-feather-user"></i> Voir le profile</a>
-											<a href="#" class="button gray ripple-effect ico" title="Supprimer la demande" data-tippy-placement="top"><i class="icon-feather-trash-2"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<!-- Overview -->
-							<div class="freelancer-overview manage-candidates">
-								<div class="freelancer-overview-inner">
-
-									<!-- Avatar -->
-									<div class="freelancer-avatar">
-										<div class="verified-badge"></div>
-										<a href="#"><img src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
-									</div>
-
-									<!-- Name -->
-									<div class="freelancer-name">
-										<h4><a href="#">Jacob LIMBI <img class="flag" src="/images/flags/cd.svg" alt="" title="Congo-Kinshasa" data-tippy-placement="top"></a></h4>
-										<!-- Details -->
-										<span class="freelancer-detail-item"><a href="#"><i class="icon-feather-mail"></i> josue@example.com</a></span>
-										<span class="freelancer-detail-item"><i class="icon-feather-phone"></i> +243899641137</span>
-										<span class="freelancer-detail-item"><i class="icon-line-awesome-clock-o"></i> 19 decembre 2020</span>
-
-										<!-- Rating -->
-										<div class="freelancer-rating">
-											<div class="star-rating" data-rating="5.0"></div>
-										</div>
-
-										<!-- Buttons -->
-										<div class="buttons-to-right always-visible margin-top-25 margin-bottom-5">
-											<a href="#" class="button ripple-effect"><i class="icon-feather-check"></i> Accepter la demande</a>
-											<a href="#small-dialog" class="popup-with-zoom-anim button dark ripple-effect"><i class="icon-feather-user"></i> Voir le profile</a>
-											<a href="#" class="button gray ripple-effect ico" title="Supprimer la demande" data-tippy-placement="top"><i class="icon-feather-trash-2"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-						<li>
-							<!-- Overview -->
-							<div class="freelancer-overview manage-candidates">
-								<div class="freelancer-overview-inner">
-
-									<!-- Avatar -->
-									<div class="freelancer-avatar">
-										<div class="verified-badge"></div>
-										<a href="#"><img src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
-									</div>
-
-									<!-- Name -->
-									<div class="freelancer-name">
-										<h4><a href="#">Jacob LIMBI <img class="flag" src="/images/flags/cd.svg" alt="" title="Congo-Kinshasa" data-tippy-placement="top"></a></h4>
-										<!-- Details -->
-										<span class="freelancer-detail-item"><a href="#"><i class="icon-feather-mail"></i> josue@example.com</a></span>
-										<span class="freelancer-detail-item"><i class="icon-feather-phone"></i> +243899641137</span>
-										<span class="freelancer-detail-item"><i class="icon-line-awesome-clock-o"></i> 19 decembre 2020</span>
-
-										<!-- Rating -->
-										<div class="freelancer-rating">
-											<div class="star-rating" data-rating="5.0"></div>
-										</div>
-
-										<!-- Buttons -->
-										<div class="buttons-to-right always-visible margin-top-25 margin-bottom-5">
-											<a href="#" class="button ripple-effect"><i class="icon-feather-check"></i> Accepter la demande</a>
-											<a href="#small-dialog" class="popup-with-zoom-anim button dark ripple-effect"><i class="icon-feather-user"></i> Voir le profile</a>
-											<a href="#" class="button gray ripple-effect ico" title="Supprimer la demande" data-tippy-placement="top"><i class="icon-feather-trash-2"></i></a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</div>
+			<div class="dashboard-box margin-top-0" id="newVIPRequest">
+				<!-- Dynamic content -->
 			</div>
 		</div>
 

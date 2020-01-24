@@ -34,4 +34,30 @@ router.post('/admin/login', (req, res) => {
          })
 })
 
+//Récupération des nouvelles demandes VIP
+router.get('/admin/vip/new', (req, res) => {
+    axios.get(`${API}/admin/vip/new/${req.session.id_admin}`)
+         .then(response => {
+            res.status(200).send(response.data)
+         })
+         .catch(err => {
+             res.status(500).send(err)
+         })
+})
+
+//Reponse aux demandes
+router.post('/admin/vip/responseRequest', (req, res) => {
+    var data = {
+        "id_vip": req.body.id_vip,
+        "response": req.body.response
+    };
+
+    axios.post(`${API}/admin/vip/respondQuery/${req.session.id_admin}`, data)
+         .then(response => {
+             res.status(200).send(response.data)
+         })
+         .catch(err => {
+             res.status(500).send(err)
+         })
+})
 module.exports = router;

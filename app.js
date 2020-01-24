@@ -14,7 +14,7 @@ app.use(session({
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dashRouter = require('./routes/dashboard');
-var adsRouter = require('./routes/ads');
+var adsRouter = require('./routes/vip');
 
 var apiRouter = require('./routes/api');
 
@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/dashboard', dashRouter);
-app.use('/ads', adsRouter);
+app.use('/vip', adsRouter);
 
 app.use('/api', apiRouter);
 

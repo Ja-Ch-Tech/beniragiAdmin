@@ -141,8 +141,8 @@
 								</ul>
 
 								<ul data-submenu-title="Publicité">
-									<li><a href="/ads/demandes"><i class="icon-feather-git-pull-request"></i> Demandes compte VIP <span class="nav-tag">2</span></a></li>
-									<li><a href="/ads/liste"><i class="icon-line-awesome-buysellads"></i>Liste publicités</a></li>
+									<li><a href="/vip/demandes"><i class="icon-feather-git-pull-request"></i> Demandes compte VIP <span class="nav-tag">2</span></a></li>
+									<li><a href="/vip/liste"><i class="icon-line-awesome-buysellads"></i>Liste publicités</a></li>
 								</ul> 
 
 								<ul data-submenu-title="Management">
@@ -290,6 +290,7 @@
 <script src="/javascripts/custom.js"></script>
 
 <script src="/javascripts/api/router.js" type="module"></script>
+<script src="/javascripts/api/external.js"></script>
 
 <!-- Chart.js // documentation: http://www.chartjs.org/docs/latest/ -->
 <script src="/javascripts/chart.min.js"></script>
