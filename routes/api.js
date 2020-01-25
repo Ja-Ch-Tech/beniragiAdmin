@@ -96,4 +96,26 @@ router.get('/admin/vip/getall', (req, res) => {
          })
 })
 
+//Route permettant de recuperer les details sur un utilisateur
+router.get('/admin/users/:user_id/details', (req, res) => {
+    axios.get(`${API}/admin/users/details/${req.session.id_admin}/${req.params.user_id}`)
+         .then(response => {
+            res.status(200).send(response.data)
+         })
+         .catch(err => {
+             res.status(200).send(err)
+         })
+})
+
+//Permet de certifié manuellement un utilisateur
+router.post('/admin/users/certified/:user_id', (req, res) => {
+    axios.post(`${API}/admin/users/certified/${req.session.id_admin}/${req.params.user_id}`)
+         .then(response => {
+             res.status(200).send(response.data)
+         })
+         .catch(err => {
+             res.status(500).send(err)
+         })
+})
+
 module.exports = router;

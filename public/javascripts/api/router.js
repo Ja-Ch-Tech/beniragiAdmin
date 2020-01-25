@@ -1,6 +1,6 @@
 import { login } from './admin.js';
 import { newVIP, all } from './vip.js'
-import { getUsers } from './client_api.js';
+import { getUsers, getUserDetails } from './client_api.js';
 
 (() => {
 
@@ -17,6 +17,10 @@ import { getUsers } from './client_api.js';
         if (pathName.split('/')[2] == "liste") {
             getUsers();
         }
+        if (/details/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
+            var user_id = pathName.split('/')[2];
+            getUserDetails(user_id);
+        }
     }
     //#endregion
 
@@ -29,6 +33,7 @@ import { getUsers } from './client_api.js';
             if (/liste/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
                 all()
             }
+
         }
     //#endregion
 })();
