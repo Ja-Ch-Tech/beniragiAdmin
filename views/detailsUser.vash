@@ -1,141 +1,18 @@
 @html.extend('layout', function(model) {
   @html.block('content', function(model) {
-	<div class="single-page-header freelancer-header" data-background-image="/images/single-freelancer.jpg">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="single-page-header-inner">
-						<div class="left-side">
-							<div class="header-image freelancer-avatar">
-								<img src="/images/avatar/undraw_profile_pic_ic5t.png" alt="">
-							</div>
-							<div class="header-details">
-								<h3>Jacob LIMBI <span>Informatique</span></h3>
-								<ul>
-									<li><div class="star-rating" data-rating="5.0"></div></li>
-									<li><img class="flag" src="/images/flags/cd.svg" alt=""> congo-kinshasa</li>
-									<li><div class="verified-badge-with-title">Certifié</div></li>
-									<li><i class="icon-line-awesome-mobile-phone"></i>+243899641137</li>
-									<li><i class="icon-material-baseline-mail-outline"></i>josuembuyu94@gmail.com</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+  	<div id="contentDetailsUser">
+  		<div style="margin:10% 45%;" class="lds-spinner">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
 		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-xl-8 col-lg-8 content-right-offset">
-			
-				<!-- Page Content -->
-				<div class="single-page-section">
-					<h3 class="margin-bottom-25">A propos</h3>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-				</div>
-
-				<!-- Boxed List -->
-				<div class="boxed-list margin-bottom-60">
-					<div class="boxed-list-headline">
-						<h3><i class="icon-material-outline-thumb-up"></i> Feedbacks</h3>
-					</div>
-					<ul class="boxed-list-ul">
-						<li>
-							<div class="boxed-list-item">
-								<!-- Content -->
-								<div class="item-content">
-									<h4>WordPress Theme Installation <span>Rated as Freelancer</span></h4>
-									<div class="item-details margin-top-10">
-										<div class="star-rating" data-rating="5.0"></div>
-										<div class="detail-item"><i class="icon-material-outline-date-range"></i>12 Juin 2018</div>
-									</div>
-									<a class="button gray pull-right ripple-effect margin-top-5 margin-bottom-10 text-capitalize"><i
-													class="icon-feather-user"></i>&nbsp;Peter NDENGO
-									</a>
-								</div>
-							</div>
-						</li>
-						<li>
-							<div class="boxed-list-item">
-								<!-- Content -->
-								<div class="item-content">
-									<h4>PHP Core Website Fixes <span>Rated as Freelancer</span></h4>
-									<div class="item-details margin-top-10">
-										<div class="star-rating" data-rating="5.0"></div>
-										<div class="detail-item"><i class="icon-material-outline-date-range"></i>12 Juin 2018</div>
-									</div>
-									<div class="item-description">
-										<p>Awesome work, definitely will rehire. Poject was completed not only with the requirements, but on time, within our small budget.</p>
-									</div>
-									<a class="button gray pull-right ripple-effect margin-top-5 margin-bottom-10 text-capitalize"><i
-													class="icon-feather-user"></i>&nbsp;Peter NDENGO
-									</a>
-								</div>
-							</div>
-						</li>
-					</ul>
-
-				</div>
-				<!-- Boxed List / End -->
-
-			</div>
-			<div class="col-xl-4 col-lg-4">
-				<div class="sidebar-container">
-					
-					<!-- Profile Overview -->
-					<div class="profile-overview">
-						<div class="overview-item"><strong>$35</strong><span>Taux horaire</span></div>
-					</div>
-
-					<!-- Button -->
-					<a href="#small-dialog" class="apply-now-button popup-with-zoom-anim margin-bottom-50">Bloquer son compte</a>
-
-					<!-- Freelancer Indicators -->
-					<div class="sidebar-widget">
-						<div class="freelancer-indicators">
-							<!-- Indicator -->
-							<div class="indicator">
-								<strong>90%</strong>
-								<div class="indicator-bar" data-indicator-percentage="90"><span></span></div>
-								<span>A temps</span>
-							</div>	
-						</div>
-					</div>
-
-					<!-- Widget -->
-					<div class="sidebar-widget">
-						<h3>competences</h3>
-						<div class="task-tags">
-							<span>iOS</span>
-							<span>Android</span>
-							<span>mobile apps</span>
-							<span>design</span>
-							<span>Python</span>
-							<span>Flask</span>
-							<span>PHP</span>
-							<span>WordPress</span>
-						</div>
-					</div>
-
-					<!-- Widget -->
-					<div class="sidebar-widget">
-						<h3>Pieces jointes</h3>
-						<div class="attachments-container">
-							<a href="#" class="attachment-box ripple-effect"><span>Cover Letter</span><i>PDF</i></a>
-							<a href="#" class="attachment-box ripple-effect"><span>Contract</span><i>DOCX</i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  	</div>
+	
   })
 })
