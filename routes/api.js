@@ -96,4 +96,15 @@ router.get('/admin/vip/getall', (req, res) => {
          })
 })
 
+//Route permettant de stopper ou renouveler une demande
+router.get('/admin/vip/toggle/:id_vip', (req, res) => {
+    axios.get(`${API}/admin/vip/toggleResponse/${req.session.id_admin}/${req.params.id_vip}`)
+        .then(response => {
+            res.status(200).send(response.data)
+        })
+        .catch(err => {
+            res.status(200).send(err)
+        })
+})
+
 module.exports = router;

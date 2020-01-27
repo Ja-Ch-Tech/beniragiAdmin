@@ -109,9 +109,9 @@ const listAll = () => {
                     },
                     action = () => {
                         if (/stop/i.test(value.infosVIP.action)) {
-                            return '<a href="#" class="button ripple-effect"><i class="icon-line-awesome-power-off"></i> Arrêter</a>'
+                            return `<a href="#" class="button ripple-effect" onclick="toggleVIP('${value.infosVIP.id_vip}')"><i class="icon-line-awesome-power-off"></i> Arrêter</a>`
                         } else if (/Renouveler/i.test(value.infosVIP.action)) {
-                            return '<a href="#" class="button ripple-effect gray"><i class="icon-line-awesome-refresh"></i> Renouveler</a>'
+                            return `<a href="#" class="button ripple-effect gray" onclick="toggleVIP('${value.infosVIP.id_vip}')"><i class="icon-line-awesome-refresh"></i> Renouveler</a>`
                         } else if (/accord/i.test(value.infosVIP.action)) {
                             return `<a href="#" class="button ripple-effect gray" onclick="responseRequest('${value.infosVIP.id_vip}', 'true')"><i class="icon-exclamation"></i> Accord</a>`
                         }else {
