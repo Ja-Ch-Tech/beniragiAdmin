@@ -1,34 +1,37 @@
 @html.extend('layout', function(model) {
   @html.block('content', function(model) {
-	<!-- Dashboard Headline -->
-	<div class="dashboard-headline">
-		<h3>Journal des comptes sponsorisés</h3>
+	<div id="emptyRequest">
+		<!-- Dashboard Headline -->
+		<div class="dashboard-headline">
+			<h3>Journal des comptes sponsorisés</h3>
 
-	</div>
-	<!-- Row -->
-	<!-- Row -->
-	<div class="row">
-
-		<!-- Dashboard Box -->
-		<div class="col-xl-12">
-			<table class="table table-bordered col-xl-12">
-				<thead>
-				    <tr>
-				      <th>Photo</th>
-				      <th>Nom complet</th>
-				      <th>Date debut</th>
-				      <th>Date d'expiration</th>
-				      <th>Status</th>
-				      <th>Action</th>
-				    </tr>
-				</thead>
-				<tbody id="itemVIP">
-					<!-- Dynamic content -->
-				</tbody>
-			</table>
 		</div>
+		<!-- Row -->
+		<!-- Row -->
+		<div class="row">
 
+			<!-- Dashboard Box -->
+			<div class="col-xl-12">
+				<table class="table table-bordered col-xl-12">
+					<thead>
+						<tr>
+						<th>Photo</th>
+						<th>Nom complet</th>
+						<th>Date debut</th>
+						<th>Date d'expiration</th>
+						<th>Status</th>
+						<th>Action</th>
+						</tr>
+					</thead>
+					<tbody id="itemVIP">
+						<!-- Dynamic content -->
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+		<!-- Row / End -->
 	</div>
-	<!-- Row / End -->
+	
   })
 })

@@ -1,23 +1,26 @@
 @html.extend('layout', function(model) {
   @html.block('content', function(model) {
 	<!-- Dashboard Headline -->
-	<div class="dashboard-headline">
-		<h3>Demandes</h3>
-		<span class="margin-top-7">Demande pour compte VIP</span>
+	<div id="emptyRequest">
+		<div class="dashboard-headline">
+			<h3>Demandes</h3>
+			<span class="margin-top-7">Demande pour compte VIP</span>
 
-	</div>
-	<!-- Row -->
-	<!-- Row -->
-	<div class="row">
-
-		<!-- Dashboard Box -->
-		<div class="col-xl-12">
-			<div class="dashboard-box margin-top-0" id="newVIPRequest">
-				<!-- Dynamic content -->
-			</div>
 		</div>
+		<!-- Row -->
+		<!-- Row -->
+		<div class="row">
 
+			<!-- Dashboard Box -->
+			<div class="col-xl-12" >
+				<div class="dashboard-box margin-top-0" id="newVIPRequest">
+					<!-- Dynamic content -->
+				</div>
+			</div>
+
+		</div>
 	</div>
+	
 	<!-- Row / End -->
   })
 })

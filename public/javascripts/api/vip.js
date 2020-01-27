@@ -73,7 +73,9 @@ const list = () => {
                     }
                 })
             } else {
-                
+                var contain = `<img src="/images/svg/undraw_empty_xct9.svg" style="width: 500px;">`;
+
+                $("#emptyRequest").html(contain);
             }
         },
         error: function (err) {
@@ -137,7 +139,9 @@ const listAll = () => {
                     $("#itemVIP").append(content)
                 })
             } else {
-                
+                var contain = `<img src="/images/svg/undraw_empty_xct9.svg" style="width: 500px;">`;
+
+                $("#emptyRequest").html(contain);
             }
         },
         error: function (err) {
