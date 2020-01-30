@@ -15,6 +15,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var dashRouter = require('./routes/dashboard');
 var adsRouter = require('./routes/vip');
+var jobRouter = require('./routes/job');
+var villeRouter = require('./routes/ville');
 
 var apiRouter = require('./routes/api');
 
@@ -32,6 +34,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/dashboard', dashRouter);
 app.use('/vip', adsRouter);
+app.use('/metier', jobRouter);
+app.use('/ville', villeRouter);
 
 app.use('/api', apiRouter);
 

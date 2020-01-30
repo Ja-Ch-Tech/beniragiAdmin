@@ -129,4 +129,58 @@ router.post('/admin/users/certified/:user_id', (req, res) => {
          })
 })
 
+//Creation d'un metier
+router.post('/admin/job/creation', (req, res) => {
+    var data = {
+        "nom": req.body.denomination,
+        "icon": req.body.icon,
+        "describe" : req.body.description,
+        "id_admin" : req.session.id_admin
+    };
+
+    axios.post(`${API}/admin/jobs/create`, data)
+         .then(response => {
+             res.status(200).send(response.data)
+         })
+         .catch(err => {
+             res.status(500).send(err)
+         })
+});
+
+//Route pour la récupération de nombre de user par type
+router.get('/admin/users/numberUserByType', (req, res) => {
+    axios.get(`${API}/users/numberUserByType`)
+        .then(response => {
+            res.status(200).send(response.data);
+        })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+})
+
+//Creation d'une nouvelle ville
+router.post('/admin/ville/creation', (req, res) => {
+    var datas = {
+        "nom" : req.body.denomination
+    };
+    axios.post(`${API}/town/create`, datas)
+        .then(response => {
+            res.status(200).send(response.data);
+        })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+})
+
+//Bloquer un compte beniragi
+router.get('/admin/toggle/:id_user', (req, res) => {
+    axios.get(`${API}/admin/users/toggle/${req.session.id_admin}/${req.params.id_user}`)
+        .then(response => {
+            res.status(200).send(response.data);
+        })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+})
+
 module.exports = router;

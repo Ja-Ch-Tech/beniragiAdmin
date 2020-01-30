@@ -1,6 +1,7 @@
 import { login } from './admin.js';
 import { newVIP, all } from './vip.js'
-import { getUsers, getUserDetails } from './client_api.js';
+import { getUsers, getUserDetails, getStatsUsers, createTown } from './client_api.js';
+import { select, addJob } from './job_api.js';
 
 (() => {
 
@@ -25,15 +26,38 @@ import { getUsers, getUserDetails } from './client_api.js';
     //#endregion
 
     //#region VIP
-        if (pathName.split("/")[1] == "vip") {
-            if (/demandes/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
-                newVIP()
-            }
-
-            if (/liste/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
-                all()
-            }
-
+    if (pathName.split("/")[1] == "vip") {
+        if (/demandes/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
+            newVIP()
         }
+
+        if (/liste/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
+            all()
+        }
+
+    }
+    //#endregion
+
+    //#region JOB
+    if (pathName.split("/")[1] == "metier") {
+        if (/creation/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
+            select();
+            addJob();
+        }
+    }
+    //#endregion
+
+    //#region STATS
+    if (pathName.split("/")[1] == "dashboard") {
+        getStatsUsers();
+    }
+    //#endregion
+
+    //#region TOWN
+    if (pathName.split("/")[1] == "ville") {
+        if (/creation/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
+            createTown();
+        }
+    }
     //#endregion
 })();

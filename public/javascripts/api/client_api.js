@@ -1,4 +1,4 @@
-import { getSessionUser, starRating,getItem, customDate } from './init.js';
+import { getSessionUser, starRating,getItem, customDate, funFacts, NoEmpty } from './init.js';
 
 const getUsers = () => {
     getSessionUser((state, data) => {
@@ -22,8 +22,6 @@ const getUsers = () => {
                                 <div style="margin-top:-7px;" class="sort-by">
                                     <select id="filterByType">
                                         <option value="tous">Tous</option>
-                                        <option value="Employeur">Employeur</option>
-                                        <option value="Freelancer">Freelancer</option>
                                     </select>
                                 </div>
                             </div>
@@ -37,6 +35,7 @@ const getUsers = () => {
                         count = 0;
                         $("#listeUsers").html(contentHeader);
                         data.getObjet.map(usersType => {
+                            $("#filterByType").append(`<option value="${usersType.type}">${usersType.type}</option>`);
                             tabLength = usersType.users.length;
                             count += tabLength;
                             FilterUsersContent(usersType.users, tabLength);
@@ -293,6 +292,13 @@ const getUserDetails = (user_id) => {
                                     return ``;
                                 }
                             },
+                            toggleBtn = () => {
+                                if (freelancer.flag) {
+                                    return `<a href="#" id="btn-toggle-user" data-state="true" class="apply-now-button popup-with-zoom-anim margin-bottom-50">Verouiller ce compte</a>`;
+                                } else {
+                                    return `<a href="#" id="btn-toggle-user" data-state="false" class="apply-now-button popup-with-zoom-anim margin-bottom-50">Deverouillez ce compte</a>`;
+                                }
+                            },
                             contentHeader = `
                             <div class="single-page-header freelancer-header">
                                 <div class="container">
@@ -348,7 +354,7 @@ const getUserDetails = (user_id) => {
                                             </div>
 
                                             <!-- Button -->
-                                            <a href="#" class="apply-now-button popup-with-zoom-anim margin-bottom-50">Bloquer son compte</a>
+                                            ${toggleBtn()}
 
                                             <!-- Freelancer Indicators -->
                                             <div class="sidebar-widget">
@@ -409,7 +415,50 @@ const getUserDetails = (user_id) => {
                         $(".actionCertication").on('click', (e) => {
                             certifiedUser(freelancer._id, e);
                         });
-                    } else {}
+
+                        //Activation ou desactivation d'un compte
+                        $("#btn-toggle-user").on('click', (e) => {
+                            e.preventDefault();
+                            toggleAccount(freelancer._id, e.currentTarget, (data) => {
+                                var attribute = e.currentTarget.getAttribute("data-state"),
+                                    message = attribute == "true" ? "Le verouillage de ce compte à reussi avec success" : "Le deverouillage de ce compte à reussi avec success",
+                                    contentBtn = attribute == "true" ? "Verouiller ce compte" : "Deverouiller ce compte"
+                                $("#btn-toggle-user").html(contentBtn);
+                                if (data.getEtat) {
+                                    Snackbar.show({
+                                        text: message,
+                                        pos: 'top-center',
+                                        showAction: true,
+                                        actionText: "Fermer",
+                                        duration: 3000,
+                                        textColor: '#fff',
+                                        backgroundColor: '#3696f5'
+                                    });
+                                    setInterval(function () {
+                                        window.location.reload();
+                                    }, 2000);
+                                } else {
+                                    Snackbar.show({
+                                        text: data.getMessage,
+                                        pos: 'bottom-center',
+                                        showAction: true,
+                                        actionText: "Fermer",
+                                        duration: 3000,
+                                        textColor: '#fff',
+                                        backgroundColor: '#3696f5'
+                                    });
+                                }
+                            });
+                        })
+                    } else {$("#contentDetailsUser").html(`
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div style="margin:13% 0%;">
+                                    <img height=250 src="/images/svg/undraw_personal_text_vkd8.svg" /><br><br>
+                                    <p style="font-size:25px;">Le profile de cet utilisateur n'existe ou est bloqué</p>
+                                </div>
+                            </div>
+                        </div>`)}
                     console.log(datas)
                 },
                 error: function(err) {
@@ -484,4 +533,177 @@ const certifiedUser = (user_id, element) => {
     })
 }
 
-export { getUsers, getUserDetails }
+/**
+ * Module pour la récupération de nombre d'utilisateur par type
+ */
+const getStatsUsers = () => {
+    $.ajax({
+        type: 'GET',
+        url: "/api/admin/users/numberUserByType",
+        dataType: "json",
+        success: function (data) {
+            if (data.getEtat) {
+                var sortie = 0;
+                $("#stateUsers").html('');
+                data.getObjet.map(value => {
+                    console.log(value);
+                    sortie++;
+                    var content = `
+                    <div class="fun-fact" data-fun-fact-color="#36bd78">
+                        <div class="fun-fact-text">
+                            <span>${value.typeUser}</span>
+                            <h4>${value.count}</h4>
+                        </div>
+                        <div class="fun-fact-icon"><i class="icon-material-outline-person-pin"></i></div>
+                    </div>`;
+                    $("#stateUsers").append(content);
+                    if (sortie == data.getObjet.length) {
+                        funFacts();
+                        $("#stateUsers").append(`
+                        <!-- Last one has to be hidden below 1600px, sorry :( -->
+                        <div class="fun-fact" data-fun-fact-color="#2a41e6">
+                        </div>`);
+                    }
+                })
+            }
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    });
+}
+
+
+/**
+ * Module pour la creation d'une ville
+ */
+
+ const createTown = () => {
+    $("#add-town-form").on('submit', (e) => {
+        e.preventDefault();
+        getSessionUser((state, session) => {
+            if (state) {
+                var inputs = e.target.elements,
+                    objData = {};
+
+                for (let index = 0; index < inputs.length; index++) {
+                    var name = e.target.elements[index].name;
+                    if (/input/i.test(e.target.elements[index].localName)) {
+                        objData[name] = e.target.elements[index].value;
+                    }
+                }
+
+                if (NoEmpty(objData)) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "/api/admin/ville/creation",
+                        dataType: "json",
+                        data : objData,
+                        beforeSend : function () {
+                            $("#btn-add-town").html('<div class="sbl-circ"></div> Création en cours')
+                        },
+                        success: function(data) {
+                            $("#btn-add-town").html('Valider<i class="icon-material-outline-arrow-right-alt"></i>');
+                            if (data.getEtat) {
+                                Snackbar.show({
+                                    text: "La creation de la ville à reussi",
+                                    pos: 'bottom-center',
+                                    showAction: true,
+                                    actionText: "Fermer",
+                                    duration: 3000,
+                                    textColor: '#fff',
+                                    backgroundColor: '#3696f5'
+                                });
+                                setInterval(function () {
+                                    window.location.reload();
+                                }, 2000);
+                            } else {
+                                Snackbar.show({
+                                    text: data.getMessage,
+                                    pos: 'bottom-center',
+                                    showAction: true,
+                                    actionText: "Fermer",
+                                    duration: 3000,
+                                    textColor: '#fff',
+                                    backgroundColor: '#ad344b'
+                                });
+                            }
+                        },
+                        error: function(err) {
+                            $("#btn-add-town").html('Valider<i class="icon-material-outline-arrow-right-alt"></i>');
+                            console.log(err);
+                            Snackbar.show({
+                                text:"Connexion interrompu!",
+                                pos: 'bottom-center',
+                                showAction: true,
+                                actionText: "Fermer",
+                                duration: 3000,
+                                textColor: '#fff',
+                                backgroundColor: '#ad344b'
+                            });
+                        }
+                    });
+                } else {
+                    Snackbar.show({
+                        text:"Veuillez renseigner tous les champs",
+                        pos: 'bottom-center',
+                        showAction: true,
+                        actionText: "Fermer",
+                        duration: 3000,
+                        textColor: '#fff',
+                        backgroundColor: '#ad344b'
+                    });
+                }
+            } else {
+                Snackbar.show({
+                    text:"Votre session a expiré, reconnectez-vous",
+                    pos: 'bottom-center',
+                    showAction: true,
+                    actionText: "Fermer",
+                    duration: 3000,
+                    textColor: '#fff',
+                    backgroundColor: '#ad344b'
+                });
+            }
+            
+        });
+        
+    });
+ }
+
+ /**
+ * Module pour l'activation ou la desactivation d'un compte 
+ */
+ const toggleAccount = (id_user, element, callback) => {
+    getSessionUser((state, session) => {
+        if (state) {
+            $.ajax({
+                type: 'GET',
+                url: `/api/admin/toggle/${id_user}`,
+                dataType: "json",
+                beforeSend : function () {
+                    element.innerHTML = `<div class="sbl-circ"></div> processus en cours`;
+                },
+                success: function(data) {
+                    callback(data);
+                },
+                error: function(err) {
+                    callback(err);
+                }
+            });
+        } else {
+            Snackbar.show({
+                text:"Votre session a expiré, reconnectez-vous",
+                pos: 'bottom-center',
+                showAction: true,
+                actionText: "Fermer",
+                duration: 3000,
+                textColor: '#fff',
+                backgroundColor: '#ad344b'
+            });
+        }
+        
+    });
+ }
+
+export { getUsers, getUserDetails, getStatsUsers, createTown }

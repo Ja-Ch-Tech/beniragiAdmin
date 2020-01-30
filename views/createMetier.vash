@@ -1,0 +1,215 @@
+@html.extend('layout', function(model) {
+  @html.block('content', function(model) {
+	<div>
+		<div class="dashboard-headline">
+			<h3>Création d'un metier</h3>
+
+		</div>
+		<!-- Row -->
+		<!-- Row -->
+		<div class="row">
+
+			<!-- Dashboard Box -->
+			<div class="col-xl-12" >
+				<form method="post" id="add-job-form">
+					<div class="input-with-icon-left">
+						<i class="icon-material-outline-text-fields"></i>
+						<input type="text" class="input-text with-border" name="denomination" id="denomination" placeholder="Dénomination" required/>
+					</div>
+
+					<div class="input-with-icon-left">
+						<a href="#sign-in-dialog" class="popup-with-zoom-anim">
+						<i style="cursor: pointer;" data-tippy-placement="top" title="Selectionnez une icon" class="icon-material-outline-brush"></i></a>
+						<input type="text" class="input-text with-border" name="icon" id="icon" placeholder="Cliquez sur l'icon à gauche pour choisir l'icon du metier" required/>
+					</div>
+					<textarea name="description" cols="10" placeholder="Description du metier" class="with-border"></textarea>
+				</form>
+				<!-- Button -->
+				<center><button id="btn-add-job" class="button button-sliding-icon ripple-effect float-right" type="submit" form="add-job-form">Valider<i class="icon-material-outline-arrow-right-alt"></i></button></center>
+			</div>
+			<div id="sign-in-dialog" style="min-width: 1000px;padding: 5%;max-height: 500px;overflow-y: scroll;" class="zoom-anim-dialog mfp-hide dialog-with-tabs">
+				<!-- Container -->
+				<div class="container">
+					<div class="row">
+						<div class="section-headline margin-top-0 margin-bottom-20">
+							<h3>Selectionnez une icon</h3>
+						</div>
+						<div class="icon-set-container">
+							<div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-dashboard">
+					                </span>
+					                <span class="mls"> icon-material-outline-dashboard</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-access-alarm">
+					                </span>
+					                <span class="mls"> icon-material-outline-access-alarm</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-account-balance">
+					                </span>
+					                <span class="mls"> icon-material-outline-account-balance</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-add-a-photo">
+					                </span>
+					                <span class="mls"> icon-material-outline-add-a-photo</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-account-balance-wallet">
+					                </span>
+					                <span class="mls"> icon-material-outline-account-balance-wallet</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-add-photo-alternate">
+					                </span>
+					                <span class="mls"> icon-material-outline-add-photo-alternate</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-assignment">
+					                </span>
+					                <span class="mls"> icon-material-outline-assignment</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-beach-access">
+					                </span>
+					                <span class="mls"> icon-material-outline-beach-access</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-book">
+					                </span>
+					                <span class="mls"> icon-material-outline-book</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-business-center">
+					                </span>
+					                <span class="mls"> icon-material-outline-business-center</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-archive">
+					                </span>
+					                <span class="mls"> icon-material-outline-archive</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-cake">
+					                </span>
+					                <span class="mls"> icon-material-outline-cake</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-cloud">
+					                </span>
+					                <span class="mls"> icon-material-outline-cloud</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-computer">
+					                </span>
+					                <span class="mls"> icon-material-outline-computer</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-flight">
+					                </span>
+					                <span class="mls"> icon-material-outline-flight</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-group">
+					                </span>
+					                <span class="mls"> icon-material-outline-group</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-help-outline">
+					                </span>
+					                <span class="mls"> icon-material-outline-help-outline</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-https">
+					                </span>
+					                <span class="mls"> icon-material-outline-https</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-local-atm">
+					                </span>
+					                <span class="mls"> icon-material-outline-local-atm</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-material-outline-settings">
+					                </span>
+					                <span class="mls"> icon-material-outline-settings</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-feather-database">
+					                </span>
+					                <span class="mls"> icon-feather-database</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-feather-heart">
+					                </span>
+					                <span class="mls"> icon-feather-heart</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-feather-phone-call">
+					                </span>
+					                <span class="mls"> icon-feather-phone-call</span>
+					            </div>
+					        </div>
+					        <div class="glyph fs1">
+					            <div class="clearfix bshadow0 pbs select-icon">
+					                <span class="icon-feather-radio">
+					                </span>
+					                <span class="mls"> icon-feather-radio</span>
+					            </div>
+					        </div>
+						</div>
+					</div>	
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+  })
+})

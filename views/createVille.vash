@@ -1,0 +1,28 @@
+@html.extend('layout', function(model) {
+  @html.block('content', function(model) {
+	<div>
+		<div class="dashboard-headline">
+			<h3>Création d'une ville</h3>
+
+		</div>
+		<!-- Row -->
+		<!-- Row -->
+		<div class="row">
+
+			<!-- Dashboard Box -->
+			<div class="col-xl-12" >
+				<form method="post" id="add-town-form">
+					<div class="input-with-icon-left">
+						<i class="icon-material-outline-text-fields"></i>
+						<input type="text" class="input-text with-border" name="denomination" id="denomination" placeholder="Dénomination" required/>
+					</div>
+				</form>
+				<!-- Button -->
+				<center><button id="btn-add-town" class="button button-sliding-icon ripple-effect float-right" type="submit" form="add-town-form">Valider<i class="icon-material-outline-arrow-right-alt"></i></button></center>
+			</div>
+
+		</div>
+	</div>
+	
+  })
+})

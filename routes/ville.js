@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+/* Creation d'une ville. */
+router.get('/creation', function(req, res, next) {
 	if (req.session.id_admin) {
-		res.render('dashboard', { title: 'Tableau de board' });
+		res.render('createVille', { title: "Creation d'une nouvelle ville" });
 	}else{
 		res.redirect("/");
 	}

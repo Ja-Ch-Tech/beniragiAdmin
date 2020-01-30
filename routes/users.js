@@ -3,12 +3,22 @@ var router = express.Router();
 
 /* GET users listing. */
 router.get('/liste', function(req, res, next) {
-  res.render('listeUsers', { title: 'liste des utilisateurs' });
+	if (req.session.id_admin) {
+		res.render('listeUsers', { title: 'liste des utilisateurs' });
+	}else{
+		res.redirect("/");
+	}
+  
 });
 
 /* Details d'un utilisateur */
 router.get('/:id_user/details', function(req, res, next) {
-  res.render('detailsUser', { title: 'Profile' });
+	if (req.session.id_admin) {
+		res.render('detailsUser', { title: 'Profile' });
+	}else{
+		res.redirect("/");
+	}
+  
 });
 
 module.exports = router;

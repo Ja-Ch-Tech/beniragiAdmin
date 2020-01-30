@@ -73,7 +73,17 @@ const list = () => {
                     }
                 })
             } else {
-                var contain = `<img src="/images/svg/undraw_empty_xct9.svg" style="width: 500px;">`;
+                var contain = `
+                <div class="row">
+                    <div class="col-md-12">
+                        <center>
+                            <div style="margin:3% 0%;">
+                                <img src="/images/svg/undraw_empty_xct9.svg" style="width: 300px;"><br><br>
+                                <p style="font-size:25px;">Aucune demande pour le moment</p>
+                            </div>
+                        </center>
+                    </div>
+                </div>`;
 
                 $("#emptyRequest").html(contain);
             }
@@ -139,7 +149,17 @@ const listAll = () => {
                     $("#itemVIP").append(content)
                 })
             } else {
-                var contain = `<img src="/images/svg/undraw_empty_xct9.svg" style="width: 500px;">`;
+                var contain = `
+                <div class="row">
+                    <div class="col-md-12">
+                        <center>
+                            <div style="margin:3% 0%;">
+                                <img src="/images/svg/undraw_empty_xct9.svg" style="width: 300px;"><br><br>
+                                <p style="font-size:25px;">Aucun compte sponsorisé n'est disponible</p>
+                            </div>
+                        </center>
+                    </div>
+                </div>`;
 
                 $("#emptyRequest").html(contain);
             }

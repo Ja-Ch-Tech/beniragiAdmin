@@ -69,13 +69,13 @@
 												<img src="/images/avatar/undraw_profile_pic_ic5t.png" alt="">
 											</div>
 											<div class="user-name">
-												Tom Smith
+												Admin
 											</div>
 										</div>
 								</div>
 								
 								<ul class="user-menu-small-nav">
-									<li><a href="#"><i class="icon-material-outline-power-settings-new"></i> Deconnexion</a></li>
+									<li><a href="/logout"><i class="icon-material-outline-power-settings-new"></i> Deconnexion</a></li>
 								</ul>
 
 								</div>
@@ -141,21 +141,21 @@
 								</ul>
 
 								<ul data-submenu-title="Publicité">
-									<li><a href="/vip/demandes"><i class="icon-feather-git-pull-request"></i> Demandes compte VIP <span class="nav-tag">2</span></a></li>
-									<li><a href="/vip/liste"><i class="icon-line-awesome-buysellads"></i>Liste publicités</a></li>
+									<li><a href="/vip/demandes"><i class="icon-feather-git-pull-request"></i> Demandes compte VIP </a></li>
+									<li><a href="/vip/liste"><i class="icon-line-awesome-buysellads"></i>journal des comptes VIP</a></li>
 								</ul> 
 
 								<ul data-submenu-title="Management">
 									<li><a href="#"><i class="icon-material-outline-business-center"></i> Metiers</a>
 										<ul>
-											<li><a href="#">Création</a></li>
-											<li><a href="#">Liste metiers</a></li>
+											<li><a href="/metier/creation">Création</a></li>
+											<!--<li><a href="#">Liste metiers</a></li>-->
 										</ul>	
 									</li>
 									<li><a href="#"><i class="icon-material-outline-assignment"></i> Villes</a>
 										<ul>
-											<li><a href="#">Création</a></li>
-											<li><a href="#">Liste villes</a></li>
+											<li><a href="/ville/creation">Création</a></li>
+											<!--<li><a href="#">Liste villes</a></li>-->
 										</ul>	
 									</li>
 								</ul>
