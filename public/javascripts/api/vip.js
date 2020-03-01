@@ -5,7 +5,7 @@ const list = () => {
         url: '/api/admin/vip/new',
         type: 'GET',
         dataType: "json",
-        beforeSend: function () {},
+        beforeSend: function () { },
         success: function (data) {
             if (data.getEtat) {
                 var contentHead = `<div class="headline">
@@ -30,7 +30,7 @@ const list = () => {
                             return freelancer.email;
                         }
                     },
-                    content = `<li>
+                        content = `<li>
 							<!-- Overview -->
 							<div class="freelancer-overview manage-candidates">
 								<div class="freelancer-overview-inner">
@@ -39,7 +39,7 @@ const list = () => {
 									<div class="freelancer-avatar">
 										${freelancer.certificate && freelancer.certificate.certified == true ? `<div class="verified-badge"></div>` : ''}
 
-										<a href="#"><img src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
+										<a href="#"><img src="${freelancer.avatar && freelancer.avatar.path ? freelancer.avatar.path : `/images/avatar/undraw_profile_pic_ic5t.png`}" alt=""></a>
 									</div>
 
 									<!-- Name -->
@@ -65,7 +65,7 @@ const list = () => {
 								</div>
 							</div>
                         </li>`;
-                        
+
                     $("#listUsersVIP").append(content);
 
                     if (out == tab.length) {
@@ -110,29 +110,29 @@ const listAll = () => {
                             return freelancer.email;
                         }
                     },
-                    certificate = () => {
-                        if (/Certifié|Certificate/i.test(value.infosVIP.status)) {
-                            return `<div class="verified-badge-with-title">Certifié</div>`;
-                        } else if (/Arrêter|Stop/i.test(value.infosVIP.status)) {
-                            return `<div class="stop-badge-with-title">Arrêté</div>`
-                        }else {
-                            return ""
-                        }
-                    },
-                    action = () => {
-                        if (/stop/i.test(value.infosVIP.action)) {
-                            return `<a href="#" class="button ripple-effect" onclick="toggleVIP('${value.infosVIP.id_vip}')"><i class="icon-line-awesome-power-off"></i> Arrêter</a>`
-                        } else if (/Renouveler/i.test(value.infosVIP.action)) {
-                            return `<a href="#" class="button ripple-effect gray" onclick="toggleVIP('${value.infosVIP.id_vip}')"><i class="icon-line-awesome-refresh"></i> Renouveler</a>`
-                        } else if (/accord/i.test(value.infosVIP.action)) {
-                            return `<a href="#" class="button ripple-effect gray" onclick="responseRequest('${value.infosVIP.id_vip}', 'true')"><i class="icon-exclamation"></i> Accord</a>`
-                        }else {
-                            return "";
-                        }
-                    },
-                    content = `<tr class="ads">
-                                <th scope="row">
-                                    <a href="#"><img height="50" src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
+                        certificate = () => {
+                            if (/Certifié|Certificate/i.test(value.infosVIP.status)) {
+                                return `<div class="verified-badge-with-title">Certifié</div>`;
+                            } else if (/Arrêter|Stop/i.test(value.infosVIP.status)) {
+                                return `<div class="stop-badge-with-title">Arrêté</div>`
+                            } else {
+                                return ""
+                            }
+                        },
+                        action = () => {
+                            if (/stop/i.test(value.infosVIP.action)) {
+                                return `<a href="#" class="button ripple-effect" onclick="toggleVIP('${value.infosVIP.id_vip}')"><i class="icon-line-awesome-power-off"></i> Arrêter</a>`
+                            } else if (/Renouveler/i.test(value.infosVIP.action)) {
+                                return `<a href="#" class="button ripple-effect gray" onclick="toggleVIP('${value.infosVIP.id_vip}')"><i class="icon-line-awesome-refresh"></i> Renouveler</a>`
+                            } else if (/accord/i.test(value.infosVIP.action)) {
+                                return `<a href="#" class="button ripple-effect gray" onclick="responseRequest('${value.infosVIP.id_vip}', 'true')"><i class="icon-exclamation"></i> Accord</a>`
+                            } else {
+                                return "";
+                            }
+                        },
+                        content = `<tr class="ads">
+                                <th scope="row" style="text-align: center;">
+                                    <a href="#"><img height="50" src="${freelancer.avatar && freelancer.avatar.path ? freelancer.avatar.path : `/images/avatar/undraw_profile_pic_ic5t.png`}"  style="width: 50px; height: 50px;" alt=""></a>
                                 </th>
                                 <td>${name()}</td>
                                 <td>${value.infosVIP.dates.begin ? customDate(value.infosVIP.dates.begin) : ""}</td>

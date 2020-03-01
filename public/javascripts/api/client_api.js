@@ -1,15 +1,15 @@
-import { getSessionUser, starRating,getItem, customDate, funFacts, NoEmpty } from './init.js';
+import { getSessionUser, starRating, getItem, customDate, funFacts, NoEmpty } from './init.js';
 
 const getUsers = () => {
     getSessionUser((state, data) => {
-        console.log(data)
+
         if (state) {
             $.ajax({
                 type: 'GET',
                 url: `/api/admin/getUsers/${data.user_id}`,
                 dataType: "json",
-                success: function(data) {
-                    console.log(data);
+                success: function (data) {
+
                     if (data.getEtat) {
                         var contentHeader = `<div class="col-xl-12 col-lg-12">
                             <h3 class="page-title">Liste des utilisateurs beniragi services</h3>
@@ -31,8 +31,8 @@ const getUsers = () => {
                             </div>
                             <!-- Freelancers Container / End -->
                         </div>`,
-                        tabLength = 0,
-                        count = 0;
+                            tabLength = 0,
+                            count = 0;
                         $("#listeUsers").html(contentHeader);
                         data.getObjet.map(usersType => {
                             $("#filterByType").append(`<option value="${usersType.type}">${usersType.type}</option>`);
@@ -45,11 +45,11 @@ const getUsers = () => {
                             var value = $("#filterByType")[0].options[$("#filterByType")[0].selectedIndex].value;
                             filterByType(value, data.getObjet);
                         });
-                    } else {   
+                    } else {
 
                     }
                 },
-                error: function(err) {
+                error: function (err) {
                     console.log(err)
                 }
             });
@@ -63,6 +63,7 @@ const getUsers = () => {
 const FilterUsersContent = (tab, tabLength) => {
     var outFreelancer = 0;
     tab.map(freelancer => {
+
         var name = () => {
             if (freelancer.identity) {
                 return `${freelancer.identity.lastName} ${freelancer.identity.name.toUpperCase()}`
@@ -70,26 +71,26 @@ const FilterUsersContent = (tab, tabLength) => {
                 return freelancer.email;
             }
         },
-        job = () => {
-            if (freelancer.job && freelancer.job.name) {
-                return `<span style="font-size: .9em"><i class="${freelancer.job.icon}" style="font-size: 1.2em"></i>&nbsp;${freelancer.job.name}</span>`;
-            } else {
-                return `<br/>`;
-            }
-        },
-        start = () => {
-            if (freelancer.typeUser == "Employeur") {
-                return ``;
-            }else{
-                return `<div class="star-rating" data-rating="${freelancer.average}"></div>`;
-            }
-        },
-        contentFreelancer = `<div class="freelancer">
+            job = () => {
+                if (freelancer.job && freelancer.job.name) {
+                    return `<span style="font-size: .9em"><i class="${freelancer.job.icon}" style="font-size: 1.2em"></i>&nbsp;${freelancer.job.name}</span>`;
+                } else {
+                    return `<br/>`;
+                }
+            },
+            start = () => {
+                if (freelancer.typeUser == "Employeur") {
+                    return ``;
+                } else {
+                    return `<div class="star-rating" data-rating="${freelancer.average}"></div>`;
+                }
+            },
+            contentFreelancer = `<div class="freelancer">
             <div class="freelancer-overview">
                 <div class="freelancer-overview-inner">
                     <div class="freelancer-avatar">
                         ${freelancer.certificate && freelancer.certificate.certified == true ? `<div class="verified-badge"></div>` : ''}
-                        <a href="/users/${freelancer._id}/details"><img src="/images/avatar/undraw_profile_pic_ic5t.png" alt=""></a>
+                        <a href="/users/${freelancer._id}/details"><img src="${freelancer.avatar && freelancer.avatar.path ? freelancer.avatar.path : `/images/avatar/undraw_profile_pic_ic5t.png`}" alt=""></a>
                     </div>
                     <div class="freelancer-name">
                         <h4><a href="/users/${freelancer._id}/details">${name()} <img class="flag" src="/images/flags/cd.svg" alt="" title="Congo-Kinshasa" data-tippy-placement="top"></a></h4>
@@ -177,7 +178,7 @@ const getUserDetails = (user_id) => {
                 type: 'GET',
                 url: `/api/admin/users/${user_id}/details`,
                 dataType: "json",
-                success: function(datas) {
+                success: function (datas) {
                     if (datas.getEtat) {
                         var freelancer = datas.getObjet,
                             name = () => {
@@ -205,8 +206,8 @@ const getUserDetails = (user_id) => {
                                 if (freelancer.identity) {
                                     if (freelancer.identity.phoneNumber) {
                                         return `<li><i class="icon-line-awesome-mobile-phone"></i>${freelancer.identity.phoneNumber}</li>`;
-                                    } else {return `Aucun numero de telephone`}
-                                } else {return `Aucun numero de telephone`}
+                                    } else { return `Aucun numero de telephone` }
+                                } else { return `Aucun numero de telephone` }
                             },
                             feedbacks = () => {
                                 if (freelancer.typeUser !== "Employeur") {
@@ -230,7 +231,7 @@ const getUserDetails = (user_id) => {
                                                                 <div class="detail-item"><i class="icon-material-outline-date-range"></i>${customDate(feedBack.evaluation.created_at)}</div>
                                                             </div>
                                                             <div class="item-description">
-                                                                <p>${feedBack.evaluation.message ? feedBack.evaluation.message : `` }</p>
+                                                                <p>${feedBack.evaluation.message ? feedBack.evaluation.message : ``}</p>
                                                             </div>
                                                             <a class="button gray pull-right ripple-effect margin-top-5 margin-bottom-10 text-capitalize"><i
                                                                             class="icon-feather-user"></i>&nbsp;${feedBack.identity_employeur.identity ? feedBack.identity_employeur.identity.lastName + " " + feedBack.identity_employeur.identity.name : feedBack.identity_employeur.email}
@@ -240,26 +241,26 @@ const getUserDetails = (user_id) => {
                                                 </li>`;
                                                 $("#feedbackListe").append(feedBackContent);
                                             });
-                                        } else {$("#feedbackBox").html(`Aucun feedBack n'est emit sur cet utilisateur`)}
-                                    } else {$("#feedbackBox").html(`Aucun feedBack n'est emit sur cet utilisateur`)}
+                                        } else { $("#feedbackBox").html(`Aucun feedBack n'est emit sur cet utilisateur`) }
+                                    } else { $("#feedbackBox").html(`Aucun feedBack n'est emit sur cet utilisateur`) }
                                 }
                             },
                             judgement = () => {
                                 if (freelancer.inTime == 100) {
                                     return "Super-Flash au boulot !"
-                                }else if (freelancer.inTime >= 75) {
+                                } else if (freelancer.inTime >= 75) {
                                     return "Flash au boulot !"
-                                }else if (freelancer.inTime > 50) {
+                                } else if (freelancer.inTime > 50) {
                                     return "Rapide au boulot !"
-                                }else if (freelancer.inTime == 50) {
+                                } else if (freelancer.inTime == 50) {
                                     return "Vitesse normale"
-                                }else if (freelancer.inTime >= 40) {
+                                } else if (freelancer.inTime >= 40) {
                                     return "Assez rapide, mais plus lent !"
-                                }else if (freelancer.inTime >= 20) {
+                                } else if (freelancer.inTime >= 20) {
                                     return "Lent !"
-                                }else if (freelancer.inTime > 0) {
+                                } else if (freelancer.inTime > 0) {
                                     return "Trop lent, trop lent..."
-                                }else if (freelancer.inTime == 0) {
+                                } else if (freelancer.inTime == 0) {
                                     return "Pas encore côté"
                                 }
                             },
@@ -278,7 +279,7 @@ const getUserDetails = (user_id) => {
                                     } else {
                                         $("#task-tags").append("Aucune competence n'est specifiée");
                                     }
-                                    
+
                                 }
                             },
                             certificate = () => {
@@ -288,7 +289,7 @@ const getUserDetails = (user_id) => {
                                     } else {
                                         return `<li data-tippy-placement="top" title="Cliquez ici pour certifié cet utilisateur"><div style="cursor:pointer;" class="stop-badge-with-title actionCertication">Certifié cet utilisateur</div></li>`;
                                     }
-                                }else{
+                                } else {
                                     return ``;
                                 }
                             },
@@ -307,7 +308,7 @@ const getUserDetails = (user_id) => {
                                             <div class="single-page-header-inner">
                                                 <div class="left-side">
                                                     <div class="header-image freelancer-avatar">
-                                                        <img src="/images/avatar/undraw_profile_pic_ic5t.png" alt="">
+                                                        <img src="${freelancer.avatar && freelancer.avatar.path ? freelancer.avatar.path : `/images/avatar/undraw_profile_pic_ic5t.png`}" alt="">
                                                     </div>
                                                     <div class="header-details">
                                                         <h3>${name()} <span>${freelancer.job && freelancer.job.icon ? `<i class="${freelancer.job.icon}" style="font-size: 1.6em"></i>&nbsp;` : ""}${freelancer.job ? freelancer.job.name : "Aucun metier specifié"}</span></h3><br/>
@@ -319,7 +320,7 @@ const getUserDetails = (user_id) => {
                                                             </li>
                                                             ${certificate()}
                                                             ${numberPhone()}
-                                                            ${freelancer.email ? `<li><i class="icon-material-baseline-mail-outline"></i>${freelancer.email}</li>` : `Aucun email specifié` }
+                                                            ${freelancer.email ? `<li><i class="icon-material-baseline-mail-outline"></i>${freelancer.email}</li>` : `Aucun email specifié`}
                                                             
                                                         </ul>
                                                     </div>
@@ -450,7 +451,8 @@ const getUserDetails = (user_id) => {
                                 }
                             });
                         })
-                    } else {$("#contentDetailsUser").html(`
+                    } else {
+                        $("#contentDetailsUser").html(`
                         <div class="row">
                             <div class="col-md-12">
                                 <div style="margin:13% 0%;">
@@ -458,10 +460,10 @@ const getUserDetails = (user_id) => {
                                     <p style="font-size:25px;">Le profile de cet utilisateur n'existe ou est bloqué</p>
                                 </div>
                             </div>
-                        </div>`)}
-                    console.log(datas)
+                        </div>`)
+                    }
                 },
-                error: function(err) {
+                error: function (err) {
                     console.log(err);
                 }
             });
@@ -477,13 +479,13 @@ const certifiedUser = (user_id, element) => {
                 type: 'POST',
                 url: `/api/admin/users/certified/${user_id}`,
                 dataType: "json",
-                beforeSend : function () {
+                beforeSend: function () {
                     element.currentTarget.innerHTML = `Certification en cours...`;
                 },
-                success: function(data) {
+                success: function (data) {
                     if (data.getEtat) {
                         element.currentTarget.parentNode.innerHTML = `<div class="verified-badge-with-title">Déjà certifié</div>`;
-                        console.log(element.currentTarget.parentNode);
+
                         Snackbar.show({
                             text: "La Certification manuelle de cet utilisateur à reussi",
                             pos: 'top-center',
@@ -506,7 +508,7 @@ const certifiedUser = (user_id, element) => {
                         });
                     }
                 },
-                error: function(err) {
+                error: function (err) {
                     element.currentTarget.parentNode.innerHTML = `<div style="cursor:pointer;" class="stop-badge-with-title actionCertication">Certifié cet utilisateur</div>`;
                     Snackbar.show({
                         text: "Aucune connexion, verifiez votre connexion internet",
@@ -519,7 +521,7 @@ const certifiedUser = (user_id, element) => {
                     });
                 }
             });
-        }else{
+        } else {
             Snackbar.show({
                 text: "Votre session a expiré, reconnecter vous!",
                 pos: 'top-center',
@@ -546,7 +548,7 @@ const getStatsUsers = () => {
                 var sortie = 0;
                 $("#stateUsers").html('');
                 data.getObjet.map(value => {
-                    console.log(value);
+
                     sortie++;
                     var content = `
                     <div class="fun-fact" data-fun-fact-color="#36bd78">
@@ -578,7 +580,7 @@ const getStatsUsers = () => {
  * Module pour la creation d'une ville
  */
 
- const createTown = () => {
+const createTown = () => {
     $("#add-town-form").on('submit', (e) => {
         e.preventDefault();
         getSessionUser((state, session) => {
@@ -598,11 +600,11 @@ const getStatsUsers = () => {
                         type: 'POST',
                         url: "/api/admin/ville/creation",
                         dataType: "json",
-                        data : objData,
-                        beforeSend : function () {
+                        data: objData,
+                        beforeSend: function () {
                             $("#btn-add-town").html('<div class="sbl-circ"></div> Création en cours')
                         },
-                        success: function(data) {
+                        success: function (data) {
                             $("#btn-add-town").html('Valider<i class="icon-material-outline-arrow-right-alt"></i>');
                             if (data.getEtat) {
                                 Snackbar.show({
@@ -629,11 +631,11 @@ const getStatsUsers = () => {
                                 });
                             }
                         },
-                        error: function(err) {
+                        error: function (err) {
                             $("#btn-add-town").html('Valider<i class="icon-material-outline-arrow-right-alt"></i>');
                             console.log(err);
                             Snackbar.show({
-                                text:"Connexion interrompu!",
+                                text: "Connexion interrompu!",
                                 pos: 'bottom-center',
                                 showAction: true,
                                 actionText: "Fermer",
@@ -645,7 +647,7 @@ const getStatsUsers = () => {
                     });
                 } else {
                     Snackbar.show({
-                        text:"Veuillez renseigner tous les champs",
+                        text: "Veuillez renseigner tous les champs",
                         pos: 'bottom-center',
                         showAction: true,
                         actionText: "Fermer",
@@ -656,7 +658,7 @@ const getStatsUsers = () => {
                 }
             } else {
                 Snackbar.show({
-                    text:"Votre session a expiré, reconnectez-vous",
+                    text: "Votre session a expiré, reconnectez-vous",
                     pos: 'bottom-center',
                     showAction: true,
                     actionText: "Fermer",
@@ -665,35 +667,35 @@ const getStatsUsers = () => {
                     backgroundColor: '#ad344b'
                 });
             }
-            
-        });
-        
-    });
- }
 
- /**
- * Module pour l'activation ou la desactivation d'un compte 
- */
- const toggleAccount = (id_user, element, callback) => {
+        });
+
+    });
+}
+
+/**
+* Module pour l'activation ou la desactivation d'un compte 
+*/
+const toggleAccount = (id_user, element, callback) => {
     getSessionUser((state, session) => {
         if (state) {
             $.ajax({
                 type: 'GET',
                 url: `/api/admin/toggle/${id_user}`,
                 dataType: "json",
-                beforeSend : function () {
+                beforeSend: function () {
                     element.innerHTML = `<div class="sbl-circ"></div> processus en cours`;
                 },
-                success: function(data) {
+                success: function (data) {
                     callback(data);
                 },
-                error: function(err) {
+                error: function (err) {
                     callback(err);
                 }
             });
         } else {
             Snackbar.show({
-                text:"Votre session a expiré, reconnectez-vous",
+                text: "Votre session a expiré, reconnectez-vous",
                 pos: 'bottom-center',
                 showAction: true,
                 actionText: "Fermer",
@@ -702,8 +704,8 @@ const getStatsUsers = () => {
                 backgroundColor: '#ad344b'
             });
         }
-        
+
     });
- }
+}
 
 export { getUsers, getUserDetails, getStatsUsers, createTown }
