@@ -5741,6 +5741,10 @@ a.button.gray:hover {
 	background-color: #e0e0e0;
 }
 
+a.button.blue:hover {
+	background-color: #072063;
+}
+
 
 body .button i.icon-material-outline-arrow-right-alt {
 	font-size: 22px;

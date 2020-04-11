@@ -11,4 +11,14 @@ router.get('/creation', function(req, res, next) {
   
 });
 
+/* Liste des metiers. */
+router.get('/liste', function(req, res, next) {
+	if (req.session.id_admin) {
+		res.render('listeMetier', { title: "Liste des metiers" });
+	}else{
+		res.redirect("/");
+	}
+  
+});
+
 module.exports = router;
