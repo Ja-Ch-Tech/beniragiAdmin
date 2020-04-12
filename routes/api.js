@@ -194,9 +194,31 @@ router.get('/admin/job/listJobs', (req, res) => {
         })
 })
 
-//Bloquer un compte beniragi
+//Basculement de flag
 router.get('/admin/job/toggle/:id_job', (req, res) => {
     axios.put(`${API}/admin/jobs/toggle/${req.session.id_admin}/${req.params.id_job}`)
+        .then(response => {
+            res.status(200).send(response.data);
+        })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+})
+
+//Route de récupération des villes
+router.get('/admin/town/listTowns', (req, res) => {
+    axios.get(`${API}/admin/town/gets/${req.session.id_admin}`)
+        .then(response => {
+            res.status(200).send(response.data)
+        })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+})
+
+//Basculement de flag
+router.get('/admin/town/toggle/:id_town', (req, res) => {
+    axios.put(`${API}/admin/town/toggle/${req.session.id_admin}/${req.params.id_town}`)
         .then(response => {
             res.status(200).send(response.data);
         })

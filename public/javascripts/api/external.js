@@ -122,3 +122,43 @@ const toggleJob = (id, flag) => {
         }
     })
 }
+
+/**
+ * Basculement d'actif à non-actif et vice versa
+ * @param {String} id Identifiant de la ville
+ * @param {BooleanConstructor} flag L'Etat actuel de la ville
+ */
+const toggleTown = (id, flag) => {
+    $.ajax({
+        url: `/api/admin/town/toggle/${id}`,
+        type: 'GET',
+        dataType: "json",
+        beforeSend: function () {
+            $(`#thisJob${id}`).html("Load...");
+        },
+        success: function (data) {
+            if (data.getEtat) {
+                var buttonClick;
+                if (flag) {
+                    buttonClick = `<a style="background-color: green;" href="#" class="button ripple-effect" onClick="toggleTown('${id}', ${flag ? false : true})"><i class="icon-feather-check"></i> Activer</a>`;
+                } else {
+                    buttonClick = `<a href="#" class="button ripple-effect" onClick="toggleTown('${id}', ${flag ? false : true})"><i class="icon-line-awesome-power-off"></i> Désactiver</a>`
+                }
+
+                $(`#thisJob${id}`).html(buttonClick);
+
+            } else {
+                Snackbar.show({
+                    text: "Un petit problème !",
+                    pos: 'bottom-center',
+                    duration: 3000,
+                    textColor: '#fff',
+                    backgroundColor: '#ad344b'
+                });
+            }
+        },
+        error: function (err) {
+            console.log(err);
+        }
+    })
+}

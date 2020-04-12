@@ -2,6 +2,7 @@ import { login } from './admin.js';
 import { newVIP, all } from './vip.js'
 import { getUsers, getUserDetails, getStatsUsers, createTown } from './client_api.js';
 import { select, addJob, listJobs } from './job_api.js';
+import { listTown } from './town_api.js';
 
 (() => {
 
@@ -61,6 +62,10 @@ import { select, addJob, listJobs } from './job_api.js';
     if (pathName.split("/")[1] == "ville") {
         if (/creation/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
             createTown();
+        }
+
+        if (/liste/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
+            listTown();
         }
     }
     //#endregion
