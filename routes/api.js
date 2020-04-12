@@ -183,4 +183,26 @@ router.get('/admin/toggle/:id_user', (req, res) => {
         })
 })
 
+//Route de récupération des métiers
+router.get('/admin/job/listJobs', (req, res) => {
+    axios.get(`${API}/admin/jobs/gets/${req.session.id_admin}`)
+        .then(response => {
+            res.status(200).send(response.data)
+        })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+})
+
+//Bloquer un compte beniragi
+router.get('/admin/job/toggle/:id_job', (req, res) => {
+    axios.put(`${API}/admin/jobs/toggle/${req.session.id_admin}/${req.params.id_job}`)
+        .then(response => {
+            res.status(200).send(response.data);
+        })
+        .catch(err => {
+            res.status(500).send(err)
+        })
+})
+
 module.exports = router;

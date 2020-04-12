@@ -1,7 +1,7 @@
 import { login } from './admin.js';
 import { newVIP, all } from './vip.js'
 import { getUsers, getUserDetails, getStatsUsers, createTown } from './client_api.js';
-import { select, addJob } from './job_api.js';
+import { select, addJob, listJobs } from './job_api.js';
 
 (() => {
 
@@ -43,6 +43,10 @@ import { select, addJob } from './job_api.js';
         if (/creation/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
             select();
             addJob();
+        }
+
+        if (/liste/i.test(pathName.split("/")[pathName.split("/").length - 1])) {
+            listJobs();
         }
     }
     //#endregion

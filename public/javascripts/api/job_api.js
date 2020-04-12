@@ -104,4 +104,78 @@ const addJob = () => {
 	})
 }
 
-export {select, addJob}
+const listJobs = () => {
+	$.ajax({
+		type: 'GET',
+		url: "/api/admin/job/listJobs",
+		dataType: "json",
+		success: function (data) {
+			if (data.getEtat) {
+				var headContent = `<div class="dashboard-headline">
+										<h3>Liste des tous les metiers sur Beniragi-Services (${data.getObjet.length})</h3>
+									</div>
+									<div class="row">
+										<div class="col-xl-12">
+											<table class="table table-bordered col-xl-12">
+												<thead>
+													<tr>
+														<th>Icone</th>
+														<th>Dénomination</th>
+														<th>Description</th>
+														<th>Profiles</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody id="jobsDynamic">
+												</tbody>
+											</table>
+										</div>
+									</div>`;
+
+				$("#emptyRequest").html(headContent);
+
+				data.getObjet.map(job => {
+					var bodyContent;
+					
+					if (job.flag) {
+						bodyContent = `<tr class="ads">
+												<td><center><i style="font-size: 22px;" class="${job.icon}"></i></center></td>
+												<td>${job.name}</td>
+												<td>${job.describe}</td>
+												<td>${job.profil}</td>
+												<td>
+													<center id="thisJob${job._id}">
+														<button class="button ripple-effect" onClick="toggleJob('${job._id}', ${job.flag})"><i class="icon-line-awesome-power-off"></i> Désactiver</button>            
+													</center>
+												</td>
+											</tr>`;
+					} else {
+						bodyContent = `<tr style="background-color: rgba(229,48,56,0.09);" class="ads">
+											<td><center><i style="font-size: 22px;" class="${job.icon}"></i></center></td>
+											<td>${job.name}</td>
+											<td>${job.describe}</td>
+											<td>${job.profil}</td>
+											<td>
+												<center id="thisJob${job._id}">
+													<button style="background-color: green;" class="button ripple-effect" onClick="toggleJob('${job._id}', ${job.flag})"><i class="icon-feather-check"></i> Activer</button>            
+												</center>
+											</td>
+										</tr>`
+					}
+
+					$("#jobsDynamic").append(bodyContent);
+				})
+
+
+			} else {
+				
+			}
+		},
+		error: function (err) {
+			console.log(err);
+		}
+	});
+}
+
+
+export {select, addJob, listJobs}
