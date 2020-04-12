@@ -95,7 +95,9 @@ const toggleJob = (id, flag) => {
         url: `/api/admin/job/toggle/${id}`,
         type: 'GET',
         dataType: "json",
-        beforeSend: function () { },
+        beforeSend: function () { 
+            $(`#thisJob${id}`).html("Load...");
+        },
         success: function (data) {
             if (data.getEtat) {
                 var buttonClick;
