@@ -55,11 +55,36 @@ const listTown = () => {
                 })
 
             } else {
+				var contain = `
+                <div class="row">
+                    <div class="col-md-12">
+                        <center>
+                            <div style="margin:3% 0%;">
+                                <img src="/images/svg/undraw_empty_xct9.svg" style="width: 300px;"><br><br>
+                                <p style="font-size:25px;">Aucun métier ajouté pour le moment...</p>
+                            </div>
+                        </center>
+                    </div>
+                </div>`;
 
+				$("#emptyRequest").html(contain);
             }
         },
         error: function (err) {
-            console.log(err);
+			var contain = `
+                <div class="row">
+                    <div class="col-md-12">
+                        <center>
+                            <div style="margin:3% 0%;">
+                                <img src="/images/svg/undraw_QA_engineers_dg5p.svg" style="width: 300px;"><br><br>
+                                <p style="font-size:25px;">Bah ! le serveur ça blague pas...</p>
+                                <p style="font-size: 10px;">C'est mieux d'appeler une équipe de maintenance !</p>
+                            </div>
+                        </center>
+                    </div>
+                </div>`;
+
+			$("#emptyRequest").html(contain);
         }
     });
 }

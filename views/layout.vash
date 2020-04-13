@@ -187,7 +187,7 @@
 					<div class="dashboard-footer-spacer"></div>
 					<div class="small-footer margin-top-15">
 						<div class="small-footer-copyrights">
-							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="#" style="color: red" target="_blank">Ja'Ch Technologies</a>
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="https://jachtechnologies.com" style="color: red" target="_blank">Ja'Ch Technologies</a>
 						</div>
 						<ul class="footer-social-links">
 							<li>
